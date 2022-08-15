@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./scss/app.scss";
+
+import { Header } from "./components";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
+import Home from "./pages/Home";
+
+export const AppContext = React.createContext({});
+
+export default function App() {
+	const [pizzas, setPizzas] = React.useState([]);
+	const db = "http://192.168.3.4:3001";
+
+	return (
+		<div className="wrapper">
+			<AppContext.Provider value={{ db }}>
+				<Header />
+				<Routes>
+					<Route
+						index
+						element={<Home pizzas={pizzas} setPizzas={setPizzas} />}></Route>
+					<Route path="/cart" element={<Cart />}></Route>
+					<Route path="*" element={<NotFound />}></Route>
+				</Routes>
+			</AppContext.Provider>
+		</div>
+	);
 }
-
-export default App;

@@ -1,0 +1,33 @@
+.root {
+	display: flex;
+	width: 50vw;
+	margin: 0 auto;
+	justify-content: space-around;
+	align-items: center;
+	a {
+		display: block;
+		padding: 10px;
+		width: 41px;
+		text-align: center;
+		border: 1px solid #fe5f1e;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: all 0.1s linear;
+		color: #fe5f1e;
+		font-weight: 700;
+
+		&:hover {
+			background-color: #fe5f1e;
+			color: white;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+		}
+	}
+}
+
+.selected {
+	border-radius: 50%;
+	background-color: #fe5f1e;
+	&__link {
+		color: #fff !important;
+	}
+}

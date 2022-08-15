@@ -1,0 +1,38 @@
+.root {
+	position: relative;
+}
+
+.svg {
+	position: absolute;
+	top: 25px;
+	left: 13px;
+}
+
+.input {
+	padding: 10px 10px 10px 40px;
+	margin-top: 15px;
+	width: 65vw;
+	height: 40px;
+	border: 1px solid #2c2c2c;
+	opacity: 0.5;
+	border-radius: 10px;
+	transition: opacity 0.2s linear;
+	&:hover,
+	&:focus {
+		opacity: 1;
+	}
+}
+
+.delete {
+	opacity: 0.5;
+	position: absolute;
+	top: 25px;
+	margin-left: -30px;
+	cursor: pointer;
+	width: 20px;
+	height: 20px;
+	transition: opacity 0.2s linear;
+	&:hover {
+		opacity: 1;
+	}
+}

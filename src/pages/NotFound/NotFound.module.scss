@@ -1,0 +1,18 @@
+.root {
+	text-align: center;
+	padding: 30px;
+	h2 {
+		font-size: 24px;
+	}
+	p {
+		margin-top: 10px;
+	}
+}
+
+.link {
+	color: #3e3e3e;
+	text-decoration: underline;
+	&:hover {
+		color: #000000;
+	}
+}
