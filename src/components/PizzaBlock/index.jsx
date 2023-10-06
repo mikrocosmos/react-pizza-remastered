@@ -4,7 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPizza } from "../../redux/cart/slice";
 import { AppContext } from "../../App";
 
-export function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
+export function PizzaBlock({
+	id,
+	elementID,
+	title,
+	price,
+	imageUrl,
+	sizes,
+	types,
+}) {
 	const pizzaTypes = ["тонкое", "традиционное"];
 	const [activeType, setActiveType] = React.useState(0);
 	const [activeSize, setActiveSize] = React.useState(0);
@@ -19,13 +27,14 @@ export function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
 
 	function onAdd() {
 		const item = {
-			id,
+			elementID,
 			title,
 			price: pizzaPrice,
 			imageUrl,
-			size: activeSize,
+			size: sizes[activeSize],
 			type: pizzaTypes[activeType],
 		};
+		console.log(item);
 		dispatch(addPizza(item));
 		axios.post(`${db}/cart`, item);
 	}

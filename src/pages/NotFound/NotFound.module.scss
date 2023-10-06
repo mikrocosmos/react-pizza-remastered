@@ -1,6 +1,7 @@
 .root {
 	text-align: center;
-	padding: 30px;
+	padding: 10vw;
+	line-height: clamp(2vw, 30px, 6vw);
 	h2 {
 		font-size: 24px;
 	}

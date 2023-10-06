@@ -5,11 +5,12 @@
 
 		li {
 			background-color: #f9f9f9;
-			padding: 13px 30px;
+			padding: 1vw 2vw;
 			border-radius: 30px;
 			margin-top: 15px;
 			margin-right: 10px;
 			font-weight: bold;
+			font-size: clamp(0.5vw, 14px, 6vw);
 			cursor: pointer;
 			transition: background-color 0.1s ease-in-out;
 			@include noselect();

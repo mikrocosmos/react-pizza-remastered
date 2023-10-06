@@ -12,7 +12,7 @@ export const AppContext = React.createContext({});
 
 export default function App() {
 	const [pizzas, setPizzas] = React.useState([]);
-	const db = "http://192.168.3.4:3001";
+	const db = "http://localhost:3001";
 
 	return (
 		<div className="wrapper">

@@ -78,7 +78,7 @@ export default function Home({ pizzas, setPizzas }) {
 								// 	item.title.toLowerCase().includes(searchValue.toLowerCase())
 								// )
 								// Frontend Search
-								.map((e) => <PizzaBlock key={e.id} {...e} />)}
+								.map((e) => <PizzaBlock key={e.id} elementID={e.id} {...e} />)}
 				</div>
 				{allPizzas.length > 4 && (
 					<Pagination allPizzas={allPizzas} setPage={setPage} />

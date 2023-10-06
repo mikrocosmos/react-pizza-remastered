@@ -9,6 +9,10 @@ import { AppContext } from "../../App";
 export default function Cart() {
 	const [cart, setCart] = React.useState([]);
 	const { db } = React.useContext(AppContext);
+	const dispatch = useDispatch();
+	const { totalPrice, cartItems, clearPizza } = useSelector(
+		(state) => state.cart
+	);
 
 	React.useEffect(() => {
 		(async () => {
@@ -20,6 +24,11 @@ export default function Cart() {
 			}
 		})();
 	}, [db]);
+
+	function clear() {
+		dispatch(clearPizza());
+		axios.put(`${db}/cart`, []);
+	}
 
 	return (
 		<div className="container container--cart">
@@ -58,7 +67,7 @@ export default function Cart() {
 								</svg>
 								Корзина
 							</h2>
-							<button className="cart__clear">
+							<button onClick={() => clear()} className="cart__clear">
 								<svg
 									width={20}
 									height={20}
@@ -105,10 +114,10 @@ export default function Cart() {
 						<div className="cart__bottom">
 							<div className="cart__bottom-details">
 								<span>
-									Всего пицц: <b>3 шт.</b>
+									Всего пицц: <b>{cartItems.length} шт.</b>
 								</span>
 								<span>
-									Сумма заказа: <b>900 ₽</b>
+									Сумма заказа: <b>{totalPrice} ₽</b>
 								</span>
 							</div>
 							<div className="cart__bottom-buttons">

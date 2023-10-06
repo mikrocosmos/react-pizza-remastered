@@ -1,15 +1,16 @@
 .pizza-block {
-	width: 280px;
+	width: clamp(15vw, 250px, 50vw);
 	text-align: center;
 	margin-bottom: 65px;
 	transition: all 0.1s linear;
 	border-radius: 20px;
 
 	&__image {
-		width: 260px;
+		width: clamp(15vw, 200px, 50vw);
 	}
 
 	&__title {
+		height: 6vh;
 		font-size: 20px;
 		font-weight: 900;
 		letter-spacing: 1%;
