@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 import "./scss/app.scss";
-
 import { Header } from "./components";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";

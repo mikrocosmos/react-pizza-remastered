@@ -4,36 +4,39 @@ import { Link } from "react-router-dom";
 import CartBlock from "./CartBlock";
 import EmptyCart from "./EmptyCart";
 import { useDispatch, useSelector } from "react-redux";
+import { renderPizza, clearPizza } from "../../redux/cart/slice";
 import { AppContext } from "../../App";
 
 export default function Cart() {
 	const [cart, setCart] = React.useState([]);
 	const { db } = React.useContext(AppContext);
 	const dispatch = useDispatch();
-	const { totalPrice, cartItems, clearPizza } = useSelector(
-		(state) => state.cart
-	);
+	const { totalPrice, cartItems } = useSelector((state) => state.cart);
 
 	React.useEffect(() => {
 		(async () => {
 			try {
 				const cartResponse = await axios.get(`${db}/cart`);
 				setCart(cartResponse.data);
+				dispatch(renderPizza());
 			} catch (error) {
 				alert("Ошибка: нет доступа к серверу");
 			}
 		})();
-	}, [db]);
+	}, [db, dispatch]);
 
 	function clear() {
 		dispatch(clearPizza());
-		axios.put(`${db}/cart`, []);
+		for (let i = 1; i < cart.length; i++) {
+			axios.delete(`${db}/cart/${i}`);
+		}
+		setCart([]);
 	}
 
 	return (
 		<div className="container container--cart">
 			<div className="cart">
-				{cart.length ? (
+				{cartItems ? (
 					<>
 						<div className="cart__top">
 							<h2 className="content__title">
@@ -107,7 +110,7 @@ export default function Cart() {
 							</button>
 						</div>
 						<div className="cart__items">
-							{cart.map((e) => (
+							{cartItems.map((e) => (
 								<CartBlock {...e} key={e.id} />
 							))}
 						</div>
@@ -141,7 +144,7 @@ export default function Cart() {
 									<span>Вернуться назад</span>
 								</Link>
 								<button className="button pay-btn">
-									<span>Оплатить сейчас</span>
+									<span>Оплатить</span>
 								</button>
 							</div>
 						</div>

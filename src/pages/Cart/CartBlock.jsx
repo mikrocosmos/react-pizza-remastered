@@ -1,6 +1,13 @@
 import React from "react";
 
-export default function CartBlock({ title, imageUrl, price, size, type }) {
+export default function CartBlock({
+	title,
+	imageUrl,
+	price,
+	size,
+	type,
+	count,
+}) {
 	return (
 		<div className="cart__item">
 			<div className="cart__item-img">
@@ -30,7 +37,7 @@ export default function CartBlock({ title, imageUrl, price, size, type }) {
 						/>
 					</svg>
 				</div>
-				<b>1</b>
+				<b>{count}</b>
 				<div className="button button--outline button--circle cart__item-count-plus">
 					<svg
 						width={10}

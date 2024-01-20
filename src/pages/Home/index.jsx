@@ -14,11 +14,9 @@ import {
 
 export default function Home({ pizzas, setPizzas }) {
 	const { db } = React.useContext(AppContext);
-
 	const { category, sortType, reversedSort } = useSelector(
 		(state) => state.filter
 	);
-
 	const [allPizzas, setAllPizzas] = React.useState([]); // All pizzas array, for paginate
 	const [loading, setLoading] = React.useState(true);
 	const [page, setPage] = React.useState(1);
@@ -72,7 +70,7 @@ export default function Home({ pizzas, setPizzas }) {
 				</h2>
 				<div className="content__items">
 					{loading
-						? [...new Array(10)].map(($, index) => <Skeleton key={index} />)
+						? [...new Array(4)].map(($, index) => <Skeleton key={index} />)
 						: pizzas
 								// .filter((item) =>
 								// 	item.title.toLowerCase().includes(searchValue.toLowerCase())

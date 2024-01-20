@@ -21,20 +21,21 @@ export function PizzaBlock({
 
 	const dispatch = useDispatch();
 	const cartItem = useSelector((state) =>
-		state.cart.cartItems.find((e) => e.id === id)
+		state.cart.cartItems.find((e) => e.elementID === elementID)
 	);
 	const count = cartItem ? cartItem.count : 0;
 
 	function onAdd() {
 		const item = {
 			elementID,
+			id,
 			title,
 			price: pizzaPrice,
 			imageUrl,
 			size: sizes[activeSize],
 			type: pizzaTypes[activeType],
+			count: 1,
 		};
-		console.log(item);
 		dispatch(addPizza(item));
 		axios.post(`${db}/cart`, item);
 	}
